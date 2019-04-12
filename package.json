@@ -1,0 +1,34 @@
+{
+  "name": "mongoose-tx",
+  "version": "1.0.0",
+  "description": "Mongoose transaction helper for MongoDB >= 4.0 and Mongoose >= 5.2.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/start.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hermesdj/mongoose-tx.git"
+  },
+  "keywords": [
+    "mongoose",
+    "mongodb",
+    "transactions"
+  ],
+  "author": "J. Dallard <dallardj@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hermesdj/mongoose-tx/issues"
+  },
+  "homepage": "https://github.com/hermesdj/mongoose-tx#readme",
+  "dependencies": {
+    "debug": "^4.1.1",
+    "mongoose": "^5.2.9"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "glob": "^7.1.3",
+    "mocha": "^6.1.3"
+  }
+}
