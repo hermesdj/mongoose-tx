@@ -21,7 +21,7 @@ describe('mongoose-tx', function () {
 
     before(async function () {
         conn = await mongoose.connect(uri, {
-            replicaSet: 'rs0',
+            replicaSet: 'rs',
             useNewUrlParser: true
         });
         await Account.deleteMany();
