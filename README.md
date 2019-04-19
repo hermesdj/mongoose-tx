@@ -6,6 +6,12 @@
 Mongoose tx is a transaction helper that runs transaction with retry and commit with retry according to the Mongodb 
 [documentation](https://docs.mongodb.com/manual/core/transactions/)
 
+### Credits
+
+Took a lot of inspiration from the quite promising mongoose ACID library you can find here :
+
+[Mongoose ACID](https://www.npmjs.com/package/mongoose-acid)
+
 ### required
 
 ```
