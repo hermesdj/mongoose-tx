@@ -61,7 +61,7 @@ async function Tx(wrapper) {
         await commitWithRetry(session);
         debug('transaction successful');
     } catch (err) {
-        debug('transaction failure');
+        debug('transaction failure with error %o', err);
         await session.abortTransaction();
         throw err
     } finally {

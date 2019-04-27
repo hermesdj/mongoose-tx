@@ -1,6 +1,6 @@
 {
   "name": "mongoose-tx",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Mongoose transaction helper for MongoDB >= 4.0 and Mongoose >= 5.2.0",
   "main": "index.js",
   "scripts": {
@@ -29,6 +29,7 @@
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "glob": "^7.1.3",
-    "mocha": "^6.1.3"
+    "mocha": "^6.1.3",
+    "mongodb-memory-server": "^5.1.0"
   }
 }

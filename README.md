@@ -1,6 +1,6 @@
 # Mongoose TX
 
-[![Build Status](https://travis-ci.org/hermesdj/mongoose-tx.svg?branch=master)](https://travis-ci.org/hermesdj/mongoose-tx/)
+[![Build Status](https://travis-ci.org/hermesdj/mongoose-tx.svg?branch=master)](https://travis-ci.org/hermesdj/mongoose-tx)
 [![NPM](https://nodei.co/npm/mongoose-tx.png?compact=true)](https://npmjs.org/package/mongoose-tx)
 
 Mongoose tx is a transaction helper that runs transaction with retry and commit with retry according to the Mongodb 

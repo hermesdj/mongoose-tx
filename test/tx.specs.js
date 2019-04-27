@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
-const os = require('os');
-const hostname = os.hostname();
 mongoose.set('debug', false);
 const Tx = require('../src/tx');
 const chai = require('chai');
 const expect = chai.expect;
-const uri = os.platform() === 'win32' ? `mongodb://${hostname}:27017,${hostname}:27018,${hostname}:27019/test` : 'mongodb://localhost:27017,localhost:27018,localhost:27019/test';
+const {MongoMemoryReplSet} = require('mongodb-memory-server');
+
+const wait = (t) => new Promise(res => setTimeout(res, t));
+
 const Account = mongoose.model('Account', new mongoose.Schema({
     balance: Number
 }));
@@ -14,14 +15,39 @@ const People = mongoose.model('People', new mongoose.Schema({
     balance: Number
 }));
 
+let uri;
 let conn;
+let replSet;
+
+const initReplSet = async function () {
+    replSet = new MongoMemoryReplSet({
+        debug: process.env.DEBUG === '*',
+        instanceOpts: [
+            {
+                storageEngine: 'wiredTiger'
+            }
+        ],
+        replSet: {
+            name: 'rs',
+            oplogSize: 5,
+            configSettings: {
+                electionTimeoutMillis: 500,
+            },
+        }
+    });
+
+    await replSet.waitUntilRunning();
+    await wait(2000);
+
+    uri = `${await replSet.getConnectionString()}?replicaSet=rs`;
+};
 
 describe('mongoose-tx', function () {
-    this.timeout(10000);
+    this.timeout(60000);
 
     before(async function () {
+        if (!uri) await initReplSet();
         conn = await mongoose.connect(uri, {
-            replicaSet: 'rs',
             useNewUrlParser: true
         });
         await Account.deleteMany();
