@@ -61,6 +61,7 @@ describe('mongoose-tx', function () {
         await People.deleteMany();
         await mongoose.connection.db.dropDatabase();
         await conn.disconnect();
+        await replSet.stop();
     });
 
     it('should run a transaction', async function () {
